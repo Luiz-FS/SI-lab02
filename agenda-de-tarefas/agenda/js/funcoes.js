@@ -12,4 +12,9 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         {tarefa: "Fazer o café da manhã", data: "12/05/1997-12:30"},
         {tarefa: "Ir para a Universidade", data: "30/05/2000-13:30"}
     ];
+
+    $scope.adicionaTarefa = function (tarefa) {
+        $scope.tarefas.push(angular.copy(tarefa));
+        delete $scope.tarefa;
+    }
 });

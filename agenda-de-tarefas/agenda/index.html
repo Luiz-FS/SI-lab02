@@ -48,7 +48,8 @@
                 <input class="form-control" type="text" ng-model="tarefa.tarefa" placeholder="Tarefa...">
                 <input class="form-control" type="text" ng-model="tarefa.data" placeholder="DD/MM/YYYYY-HH:MM">
 
-                <button class="btn btn-primary btn-block">Adicionar Tarefa</button>
+                <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)">Adicionar Tarefa</button>
+                <button class="btn btn-danger btn-block">Remover Tarefa</button>
 
             </form>
 

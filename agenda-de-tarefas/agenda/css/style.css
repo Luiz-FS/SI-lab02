@@ -53,3 +53,26 @@
     margin-right: auto;
 }
 
+.btn-block {
+
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.progress {
+
+    background-color: #a0a297;
+}
+
+.progress-bar {
+
+    background-color: #2aabd2;
+}
+
+.sr-only {
+
+    background-color: #1bd200;
+}
+
