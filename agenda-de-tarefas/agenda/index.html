@@ -17,9 +17,40 @@
 
     <body ng-controller="agendaDetarefasCtrl">
 
+        <div>
+            <h1 class="titulo">{{app}}</hr></h1>
+        </div>
+
         <div class="jumbotron">
 
-            <h4>{{nome + " " + sobrenome}}</h4>
+            {{tarefas}}
+
+            <table class="table">
+
+                <tr class="bar-title">
+                    <th>Tarefa</th>
+                    <th>Data/Hora</th>
+                    <th class="colum2">Concluída</th>
+                </tr>
+
+                <tr ng-class="{tarefa : tarefa.concluida}" ng-repeat="tarefa in tarefas">
+
+                    <td>{{tarefa.tarefa}}</td>
+                    <td>{{tarefa.data}}</td>
+                    <td class="chekbox"><input type="checkbox" ng-model="tarefa.concluida"></td>
+
+                </tr>
+
+            </table>
+
+            <form name="tarefaForm">
+
+                <input class="form-control" type="text" ng-model="tarefa.tarefa" placeholder="Tarefa...">
+                <input class="form-control" type="text" ng-model="tarefa.data" placeholder="DD/MM/YYYYY-HH:MM">
+
+                <button class="btn btn-primary btn-block">Adicionar Tarefa</button>
+
+            </form>
 
         </div>
 
