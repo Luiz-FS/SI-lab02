@@ -6,4 +6,6 @@ var app = angular.module("agendaDeTarefas", []);
 
 app.controller("agendaDetarefasCtrl", function ($scope) {
 
+    $scope.nome = "Luiz";
+    $scope.sobrenome = "Fernando";
 });
