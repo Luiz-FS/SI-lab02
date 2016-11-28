@@ -9,12 +9,13 @@
 
     background-color: #003dfd;
     text-align: center;
-    font-size-adjust: 100;
+    font-size: 43px;
 
     padding: 1rem 1rem;
     font-weight: bold;
     color: #ffffff;
     margin: 0;
+    padding: 15px;
 }
 
 .table {
@@ -23,11 +24,13 @@
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 17px;
 }
 
 .colum2 {
 
     width: 10px;
+    font-size: 17px;
 }
 
 .bar-title {
@@ -40,7 +43,7 @@
     text-align: center;
 }
 
-.tarefa {
+.concluida {
 
     color: #44d444;
     font-weight: bold;
@@ -51,28 +54,23 @@
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    height: 38px;
+    font-size: 17px;
 }
 
 .btn-block {
 
     width: 300px;
+    height: 39px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    font-size: 17px;
 }
 
-.progress {
+.delete {
 
-    background-color: #a0a297;
-}
-
-.progress-bar {
-
-    background-color: #2aabd2;
-}
-
-.sr-only {
-
-    background-color: #1bd200;
+    color: red;
+    font-weight: bold;
 }
 

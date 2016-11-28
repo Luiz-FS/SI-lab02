@@ -17,4 +17,29 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         $scope.tarefas.push(angular.copy(tarefa));
         delete $scope.tarefa;
     }
+
+    $scope.removerTarefa = function (tarefas) {
+
+        $scope.tarefas = tarefas.filter(function (tarefa) {
+
+            if(!tarefa.deletar) return tarefa;
+        });
+    }
+
+    $scope.calculaPorcentagem = function (tarefas) {
+
+        var sum = 0;
+
+        tarefas.forEach(function (tarefa) {
+
+            if(tarefa.concluida) {
+                sum += 1;
+            }
+
+        });
+
+        var porcent = (sum/tarefas.length) * 100;
+
+        return Math.floor(porcent);
+    }
 });

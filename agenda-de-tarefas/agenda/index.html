@@ -31,13 +31,15 @@
                     <th>Tarefa</th>
                     <th>Data/Hora</th>
                     <th class="colum2">Concluída</th>
+                    <th class="colum2">Deletar</th>
                 </tr>
 
-                <tr ng-class="{tarefa : tarefa.concluida}" ng-repeat="tarefa in tarefas">
+                <tr ng-class="{concluida : tarefa.concluida, delete : tarefa.deletar}" ng-repeat="tarefa in tarefas">
 
                     <td>{{tarefa.tarefa}}</td>
                     <td>{{tarefa.data}}</td>
                     <td class="chekbox"><input type="checkbox" ng-model="tarefa.concluida"></td>
+                    <td class="chekbox"><input type="checkbox" ng-model="tarefa.deletar"></td>
 
                 </tr>
 
@@ -46,12 +48,22 @@
             <form name="tarefaForm">
 
                 <input class="form-control" type="text" ng-model="tarefa.tarefa" placeholder="Tarefa...">
-                <input class="form-control" type="text" ng-model="tarefa.data" placeholder="DD/MM/YYYYY-HH:MM">
+                <input class="form-control" type="text" ng-model="tarefa.data" placeholder="DD/MM/YYYY-HH:MM">
 
                 <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)">Adicionar Tarefa</button>
-                <button class="btn btn-danger btn-block">Remover Tarefa</button>
+                <button class="btn btn-danger btn-block" ng-click="removerTarefa(tarefas)">Remover Tarefa</button>
 
             </form>
+
+            <br>
+            <br>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                     aria-valuemin="0" aria-valuemax="100" style={{"width:"+calculaPorcentagem(tarefas)+"%"}}>
+                    {{calculaPorcentagem(tarefas) + "%"}}
+                </div>
+            </div>
 
         </div>
 
