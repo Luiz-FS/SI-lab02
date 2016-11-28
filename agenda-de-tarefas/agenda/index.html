@@ -10,6 +10,7 @@
         <script src="js/bootstrap.js"></script>
         <script src="js/funcoes.js"></script>
 
+
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
 
@@ -58,12 +59,14 @@
             <br>
             <br>
 
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                     aria-valuemin="0" aria-valuemax="100" style={{"width:"+calculaPorcentagem(tarefas)+"%"}}>
-                    {{calculaPorcentagem(tarefas) + "%"}}
+
+            <progress class="progress" value={{calculaPorcentagem(tarefas)}} max="100" aria-describedby="example-caption-6">
+                <div class="progress">
+                    <span class="progress-bar" style="width: 75%;">55%</span>
                 </div>
-            </div>
+            </progress>
+
+            <progress class="progress progress-striped progress-animated" value="25" max="100">25%</progress>
 
         </div>
 

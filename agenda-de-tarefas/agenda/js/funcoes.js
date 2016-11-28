@@ -35,7 +35,6 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
             if(tarefa.concluida) {
                 sum += 1;
             }
-
         });
 
         var porcent = (sum/tarefas.length) * 100;
