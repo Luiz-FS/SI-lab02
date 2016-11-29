@@ -19,12 +19,18 @@
     <body ng-controller="agendaDetarefasCtrl">
 
         <div>
-            <h1 class="titulo">{{app}}</hr></h1>
+            <h1 class="titulo">{{app}}</h1>
         </div>
 
         <div class="jumbotron">
 
-            {{tarefas}}
+            <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
+
+            <select class="form-control" ng-model="select" ng-options="filtro.filtro for filtro in tableFilter">
+
+                <option value="">Filtrar tabela por...</option>
+
+            </select>
 
             <table class="table">
 
@@ -35,9 +41,10 @@
                     <th class="colum2">Deletar</th>
                 </tr>
 
-                <tr ng-class="{concluida : tarefa.concluida, delete : tarefa.deletar}" ng-repeat="tarefa in tarefas">
+                <tr ng-class="{concluida : tarefa.concluida, delete : tarefa.deletar}" ng-repeat="tarefa in tarefas | filter:{nome: criterioDeBusca}
+                        | filter:{concluida: filtroFunc(select)}">
 
-                    <td>{{tarefa.tarefa}}</td>
+                    <td>{{tarefa.nome}}</td>
                     <td>{{tarefa.data}}</td>
                     <td class="chekbox"><input type="checkbox" ng-model="tarefa.concluida"></td>
                     <td class="chekbox"><input type="checkbox" ng-model="tarefa.deletar"></td>
@@ -48,11 +55,12 @@
 
             <form name="tarefaForm">
 
-                <input class="form-control" type="text" ng-model="tarefa.tarefa" placeholder="Tarefa...">
-                <input class="form-control" type="text" ng-model="tarefa.data" placeholder="DD/MM/YYYY-HH:MM">
+                <input class="form-control" type="text" ng-model="tarefa.nome" ng-required="true" placeholder="Tarefa...">
+                <input class="form-control" type="text" ng-model="tarefa.data" ng-required="true" ng-pattern="/\d{2}/\d{2}/\d{4}-\d{2}:\d{2}/"
+                       placeholder="DD/MM/YYYY-HH:MM">
 
-                <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)">Adicionar Tarefa</button>
-                <button class="btn btn-danger btn-block" ng-click="removerTarefa(tarefas)">Remover Tarefa</button>
+                <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="tarefaForm.$invalid">Adicionar Tarefa</button>
+                <button class="btn btn-danger btn-block" ng-click="removerTarefa(tarefas)" ng-if="isTarefaADeletar(tarefas)">Remover Tarefa</button>
 
             </form>
 
@@ -60,14 +68,13 @@
             <br>
 
 
-            <progress class="progress" value={{calculaPorcentagem(tarefas)}} max="100" aria-describedby="example-caption-6">
-                <div class="progress">
-                    <span class="progress-bar" style="width: 75%;">55%</span>
-                </div>
-            </progress>
+            <div class="text-xs-center" id="example-caption-6">Progresso das tarefas&hellip; {{calculaPorcentagem(tarefas) + "%"}}</div>
+            <progress class="progress progress-striped progress-animated" value={{calculaPorcentagem(tarefas)}}  max="100">{{calculaPorcentagem(tarefas) + "%"}}<</progress>
 
-            <progress class="progress progress-striped progress-animated" value={{calculaPorcentagem(tarefas)}}  max="100">25%</progress>
+        </div>
 
+        <div>
+            <h5 class="creditos">Criado por: Luiz Fernando da Silva</h5>
         </div>
 
     </body>
