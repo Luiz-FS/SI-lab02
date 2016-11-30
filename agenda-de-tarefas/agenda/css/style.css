@@ -1,13 +1,14 @@
 .jumbotron {
 
-    background-color: #dfe0e1;
+    background-color: rgba(223, 224, 225, 0.89);
     text-align: center;
     border-radius: 0rem;
 }
 
 .titulo {
 
-    background-color: #003dfd;
+   /* background-color: #003dfd;*/
+    background-image: linear-gradient(to bottom, #71fff0, #0002a7);
     text-align: center;
     font-size: 43px;
 
@@ -42,7 +43,7 @@
 
 .concluida {
 
-    color: #44d444;
+    color: green;
     font-weight: bold;
 }
 
@@ -79,7 +80,21 @@
 
     text-align: center;
 
-    padding: 0px;
-    margin-bottom: 10px;
-    margin-top: 0px;
+    padding: 15px;
+    margin-bottom: 0px;
+    margin-top: -32px;
+    background-color: white;
+}
+
+#interface {
+
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+
+#fundo {
+
+    background-image: url(../css/wall-233407_960_720.jpg);
 }
