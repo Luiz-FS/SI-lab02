@@ -7,8 +7,8 @@
 
 .titulo {
 
-   /* background-color: #003dfd;*/
-    background-image: linear-gradient(to bottom, #71fff0, #0002a7);
+    background-color: #003dfd;
+    /*background-image: linear-gradient(to bottom, #71fff0, #0002a7);*/
     text-align: center;
     font-size: 43px;
 
@@ -94,7 +94,7 @@
     margin-bottom: 0px;
 }
 
-#fundo {
+#palnoDeFundo {
 
     background-image: url(../css/wall-233407_960_720.jpg);
 }
