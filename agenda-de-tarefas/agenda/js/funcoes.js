@@ -9,8 +9,8 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
     $scope.app = "Agenda de Tarefas";
 
     $scope.tarefas = [
-        {nome: "Fazer o café da manhã", data: "12/05/1997-12:30", concluida: false, deletar: false},
-        {nome: "Ir para a Universidade", data: "30/05/2000-13:30", concluida: false, deletar: false}
+        {nome: "Fazer o café da manhã", data: "12/05/1997-12:30", concluida: false},
+        {nome: "Ir para a Universidade", data: "30/05/2000-13:30", concluida: false}
     ];
 
     $scope.tableFilter = [
@@ -22,7 +22,7 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
     $scope.adicionaTarefa = function (tarefa) {
 
         tarefa.concluida = false;
-        tarefa.deletar = false;
+
         $scope.tarefas.push(angular.copy(tarefa));
         delete $scope.tarefa;
     }
@@ -63,11 +63,29 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         else if (select.filtro == "Não concluidas") return false;
     }
 
-    $scope.isTarefaADeletar = function (tarefas) {
+    $scope.concluir = function (tarefa) {
 
-        return tarefas.some(function (tarefa) {
-            return tarefa.deletar;
-        })
+        if (tarefa.concluida) {
+            tarefa.concluida = false;
+        } else {
+            tarefa.concluida = true;
+        }
     }
 
+    var getIndexTarefa = function (tarefa) {
+
+        for (var i = 0; i < $scope.tarefas.length; i++) {
+
+            if ($scope.tarefas[i] == tarefa) {
+                return i;
+            }
+        }
+    }
+
+    $scope.remove = function (tarefa) {
+
+        var index = getIndexTarefa(tarefa);
+
+        $scope.tarefas.splice(index, 1);
+    }
 });

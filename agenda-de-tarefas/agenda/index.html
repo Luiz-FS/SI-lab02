@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/glyphicon.css">
 
     </head>
 
@@ -26,54 +27,53 @@
 
             <div class="jumbotron">
 
-                <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
-
-                <select class="form-control" ng-model="select" ng-options="filtro.filtro for filtro in tableFilter">
-
-                    <option value="">Filtrar tabela por...</option>
-
-                </select>
-
-                <table class="table">
-
-                    <tr class="bar-title">
-                        <th>Tarefa</th>
-                        <th>Data/Hora</th>
-                        <th class="colum2">Concluída</th>
-                        <th class="colum2">Deletar</th>
-                    </tr>
-
-                    <tr ng-class="{concluida : tarefa.concluida, delete : tarefa.deletar}" ng-repeat="tarefa in tarefas | filter:{nome: criterioDeBusca}
-                            | filter:{concluida: filtroFunc(select)}">
-
-                        <td>{{tarefa.nome}}</td>
-                        <td>{{tarefa.data}}</td>
-                        <td class="chekbox"><input type="checkbox" ng-model="tarefa.concluida"></td>
-                        <td class="chekbox"><input type="checkbox" ng-model="tarefa.deletar"></td>
-
-                    </tr>
-
-                </table>
-
                 <form name="tarefaForm">
 
                     <input class="form-control" type="text" ng-model="tarefa.nome" ng-required="true" placeholder="Tarefa...">
-                    <input class="form-control" type="text" ng-model="tarefa.data" ng-required="true" ng-pattern="/\d{2}/\d{2}/\d{4}-\d{2}:\d{2}/"
-                           placeholder="DD/MM/YYYY-HH:MM">
-
                     <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="tarefaForm.$invalid">Adicionar Tarefa</button>
-                    <button class="btn btn-danger btn-block" ng-click="removerTarefa(tarefas)" ng-if="isTarefaADeletar(tarefas)">Remover Tarefa</button>
 
                 </form>
 
-                <br>
-                <br>
+                <div id="controladorDeTarefas">
 
+                    <input class="form-control busca" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
+
+                    <select class="form-control filtro" ng-model="select" ng-options="filtro.filtro for filtro in tableFilter">
+
+                        <option value="">Filtrar por...</option>
+
+                    </select>
+
+                    <div id="box">
+
+                        <div id="sombreado" ng-repeat="tarefa in tarefas | filter:{nome: criterioDeBusca}
+                            | filter:{concluida: filtroFunc(select)}">
+
+                            <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}"
+                             ng-click="concluir(tarefa)">
+
+                                <p><input type="checkbox" ng-model="tarefa.concluida"></p>
+                                <p>{{tarefa.nome}}</p>
+
+                            </div>
+
+                            <div id="trash" ng-click="remove(tarefa)">
+                                <span class="glyphicon glyphicon-trash remover"></span>
+                            </div>
+
+                        </div>
+
+                        <p ng-show="tarefas.length == 0" style="margin-top: 100px">Não há tarefas a serem realizadas</p>
+
+                    </div>
+
+                </div>
 
                 <div class="text-xs-center" id="example-caption-6">Progresso das tarefas&hellip; {{calculaPorcentagem(tarefas) + "%"}}</div>
                 <progress class="progress progress-striped progress-animated" value={{calculaPorcentagem(tarefas)}}  max="100">{{calculaPorcentagem(tarefas) + "%"}}<</progress>
 
             </div>
+
 
             <div>
                 <h5 class="creditos">Criado por: Luiz Fernando da Silva</h5>
