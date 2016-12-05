@@ -21,18 +21,28 @@
 
         <div id="interface">
 
-            <div>
+            <nav>
+
                 <h1 class="titulo">{{app}}</h1>
-            </div>
+
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://github.com/Luiz-FS" target="_blank">Sobre</a></li>
+                </ul>
+
+            </nav>
 
             <div class="jumbotron">
 
-                <form name="tarefaForm">
+                <div id="form">
 
-                    <input class="form-control" type="text" ng-model="tarefa.nome" ng-required="true" placeholder="Tarefa...">
-                    <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="tarefaForm.$invalid">Adicionar Tarefa</button>
+                    <input class="form-control" type="text" ng-model="tarefa.nome" ng-required="true" placeholder="Tarefa..."
+                       maxlength="60">
 
-                </form>
+                    <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="!tarefa.nome">Adicionar Tarefa</button>
+                    <button class="btn btn-danger btn-block" ng-click="limparTarefas()" ng-disabled="tarefas.length == 0">Limpar Tarefas</button>
+
+                </div>
 
                 <div id="controladorDeTarefas">
 
@@ -52,8 +62,8 @@
                             <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}"
                              ng-click="concluir(tarefa)">
 
-                                <p><input type="checkbox" ng-model="tarefa.concluida"></p>
-                                <p>{{tarefa.nome}}</p>
+                                <div id="checkeBox"><span class="glyphicon glyphicon-ok" ng-show="tarefa.concluida"></span></div>
+                                <p id="nomeTarefa">{{tarefa.nome}}</p>
 
                             </div>
 
@@ -80,9 +90,9 @@
             </div>
 
 
-            <div>
-                <h5 class="creditos">Criado por: Luiz Fernando da Silva</h5>
-            </div>
+            <footer>
+                <h5 class="creditos">Copyright © Luiz Fernando da Silva</h5>
+            </footer>
             
         </div>
 

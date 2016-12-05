@@ -9,8 +9,8 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
     $scope.app = "Agenda de Tarefas";
 
     $scope.tarefas = [
-        {nome: "Fazer o café da manhã", data: "12/05/1997-12:30", concluida: false},
-        {nome: "Ir para a Universidade", data: "30/05/2000-13:30", concluida: false}
+        {nome: "Fazer o café da manhã", concluida: false},
+        {nome: "Ir para a Universidade", concluida: false}
     ];
 
     $scope.tableFilter = [
@@ -87,5 +87,10 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         var index = getIndexTarefa(tarefa);
 
         $scope.tarefas.splice(index, 1);
+    }
+
+    $scope.limparTarefas = function () {
+
+        $scope.tarefas = [];
     }
 });
