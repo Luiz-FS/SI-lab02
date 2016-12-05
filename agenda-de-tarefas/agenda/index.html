@@ -63,14 +63,19 @@
 
                         </div>
 
-                        <p ng-show="tarefas.length == 0" style="margin-top: 100px">Não há tarefas a serem realizadas</p>
+                        <p id="tarefasVazias" ng-show="tarefas.length == 0">Não há tarefas a serem realizadas</p>
 
                     </div>
 
                 </div>
 
                 <div class="text-xs-center" id="example-caption-6">Progresso das tarefas&hellip; {{calculaPorcentagem(tarefas) + "%"}}</div>
-                <progress class="progress progress-striped progress-animated" value={{calculaPorcentagem(tarefas)}}  max="100">{{calculaPorcentagem(tarefas) + "%"}}<</progress>
+                <div id="progressBar">
+
+                    <div id="progressConcluida" style="{{'width:' + calculaPorcentagem(tarefas) + '%'}}"></div>
+                    <div id="progressNaoOcncluida" style="{{'width:' + (100 - calculaPorcentagem(tarefas)) + '%'}}"></div>
+
+                </div>
 
             </div>
 
