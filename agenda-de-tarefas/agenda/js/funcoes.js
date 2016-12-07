@@ -19,6 +19,8 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         {filtro: "Não concluidas"}
     ];
 
+    $scope.MAXIMO_PERCENTUAL = 100;
+
     $scope.adicionaTarefa = function (tarefa) {
 
         tarefa.concluida = false;
@@ -55,7 +57,7 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         return Math.floor(porcent);
     }
 
-    $scope.filtroFunc = function (select) {
+    $scope.filtroTarefas = function (select) {
 
         if (select == null || select.filtro == "Todos") return '';
 

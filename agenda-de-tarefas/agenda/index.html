@@ -36,8 +36,8 @@
 
                 <div id="form">
 
-                    <input class="form-control" type="text" ng-model="tarefa.nome" ng-required="true" placeholder="Tarefa..."
-                       maxlength="60">
+                    <input class="form-control" type="text" ng-model="tarefa.nome" placeholder="Tarefa..."
+                       maxlength="53">
 
                     <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="!tarefa.nome">Adicionar Tarefa</button>
                     <button class="btn btn-danger btn-block" ng-click="limparTarefas()" ng-disabled="tarefas.length == 0">Limpar Tarefas</button>
@@ -57,7 +57,7 @@
                     <div id="box">
 
                         <div id="sombreado" ng-repeat="tarefa in tarefas | filter:{nome: criterioDeBusca}
-                            | filter:{concluida: filtroFunc(select)}">
+                            | filter:{concluida: filtroTarefas(select)}">
 
                             <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}"
                              ng-click="concluir(tarefa)">
@@ -83,7 +83,7 @@
                 <div id="progressBar">
 
                     <div id="progressConcluida" style="{{'width:' + calculaPorcentagem(tarefas) + '%'}}"></div>
-                    <div id="progressNaoOcncluida" style="{{'width:' + (100 - calculaPorcentagem(tarefas)) + '%'}}"></div>
+                    <div id="progressNaoOcncluida" style="{{'width:' + (MAXIMO_PERCENTUAL - calculaPorcentagem(tarefas)) + '%'}}"></div>
 
                 </div>
 
