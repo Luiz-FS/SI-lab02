@@ -10,7 +10,8 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
 
     $scope.tarefas = [
         {nome: "Fazer o café da manhã", concluida: false},
-        {nome: "Ir para a Universidade", concluida: false}
+        {nome: "Ir para a Universidade", concluida: false},
+        {nome: "Assistir aula de Sistemas da Informação", concluida: false}
     ];
 
     $scope.tableFilter = [
