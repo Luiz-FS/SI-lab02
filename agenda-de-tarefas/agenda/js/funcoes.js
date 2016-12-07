@@ -30,12 +30,16 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         delete $scope.tarefa;
     }
 
-    $scope.removerTarefa = function (tarefas) {
+    $scope.remove = function (tarefa) {
 
-        $scope.tarefas = tarefas.filter(function (tarefa) {
+        var index = getIndexTarefa(tarefa);
 
-            if(!tarefa.deletar) return tarefa;
-        });
+        $scope.tarefas.splice(index, 1);
+    }
+
+    $scope.limparTarefas = function () {
+
+        $scope.tarefas = [];
     }
 
     $scope.calculaPorcentagem = function (tarefas) {
@@ -66,7 +70,7 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         else if (select.filtro == "Não concluidas") return false;
     }
 
-    $scope.concluir = function (tarefa) {
+    $scope.marcarOudesmarcarConcluida = function (tarefa) {
 
         if (tarefa.concluida) {
             tarefa.concluida = false;
@@ -83,17 +87,5 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
                 return i;
             }
         }
-    }
-
-    $scope.remove = function (tarefa) {
-
-        var index = getIndexTarefa(tarefa);
-
-        $scope.tarefas.splice(index, 1);
-    }
-
-    $scope.limparTarefas = function () {
-
-        $scope.tarefas = [];
     }
 });

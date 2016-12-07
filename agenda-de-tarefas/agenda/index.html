@@ -60,7 +60,7 @@
                             | filter:{concluida: filtroTarefas(select)}">
 
                             <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}"
-                             ng-click="concluir(tarefa)">
+                             ng-click="marcarOudesmarcarConcluida(tarefa)">
 
                                 <div id="checkeBox"><span class="glyphicon glyphicon-ok" ng-show="tarefa.concluida"></span></div>
                                 <p id="nomeTarefa">{{tarefa.nome}}</p>
