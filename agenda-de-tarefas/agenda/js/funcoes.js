@@ -20,6 +20,8 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
         {filtro: "Não concluidas"}
     ];
 
+    $scope.tarefaAtual = {};
+
     $scope.MAXIMO_PERCENTUAL = 100;
 
     $scope.adicionaTarefa = function (tarefa) {
@@ -87,5 +89,29 @@ app.controller("agendaDetarefasCtrl", function ($scope) {
                 return i;
             }
         }
+    }
+
+
+    var visualizador = document.getElementById('tarefa-visualizacao');
+
+    var fechar = document.getElementsByClassName("fechar")[0];
+
+    fechar.onclick = function () {
+
+        visualizador.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+
+        if (event.target == visualizador) {
+
+            visualizador.style.display = "none";
+        }
+    }
+
+     $scope.abrirTarefa = function (tarefa) {
+
+        $scope.tarefaAtual = tarefa;
+        visualizador.style.display = "block";
     }
 });

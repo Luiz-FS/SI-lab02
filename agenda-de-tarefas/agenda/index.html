@@ -36,8 +36,7 @@
 
                 <div id="form">
 
-                    <input class="form-control" type="text" ng-model="tarefa.nome" placeholder="Tarefa..."
-                       maxlength="53">
+                    <input class="form-control" type="text" ng-model="tarefa.nome" placeholder="Tarefa...">
 
                     <button class="btn btn-primary btn-block" ng-click="adicionaTarefa(tarefa)" ng-disabled="!tarefa.nome">Adicionar Tarefa</button>
                     <button class="btn btn-danger btn-block" ng-click="limparTarefas()" ng-disabled="tarefas.length == 0">Limpar Tarefas</button>
@@ -59,11 +58,13 @@
                         <div id="sombreado" ng-repeat="tarefa in tarefas | filter:{nome: criterioDeBusca}
                             | filter:{concluida: filtroTarefas(select)}">
 
-                            <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}"
-                             ng-click="marcarOudesmarcarConcluida(tarefa)">
+                            <div ng-class="{concluida: tarefa.concluida, naoConcluida: !tarefa.concluida}">
 
-                                <div id="checkeBox"><span class="glyphicon glyphicon-ok" ng-show="tarefa.concluida"></span></div>
-                                <p id="nomeTarefa">{{tarefa.nome}}</p>
+                                <div id="checkeBox" ng-click="marcarOudesmarcarConcluida(tarefa)"><span class="glyphicon glyphicon-ok" ng-show="tarefa.concluida"></span></div>
+
+                                <div id="nomeTarefa" ng-click="abrirTarefa(tarefa)">
+                                    <p>{{tarefa.nome}}</p>
+                                </div>
 
                             </div>
 
@@ -89,11 +90,40 @@
 
             </div>
 
-
             <footer>
                 <h5 class="creditos">Copyright © Luiz Fernando da Silva</h5>
             </footer>
             
+        </div>
+
+        <div id="tarefa-visualizacao" class="visualizacao">
+
+            <div class="caixa-dialogo">
+
+                <div class="titulo-dialogo">
+
+                    <span class="fechar">&times;</span>
+                    <h2>Gerenciador de Tarefa</h2>
+
+                </div>
+
+                <div class="corpo-texto">
+
+                    <p><span class="atributo">Tarefa: </span>{{tarefaAtual.nome}}</p>
+                    <p><span class="atributo">Data: </span>25/08/1997</p>
+
+                    <div id="botoes">
+
+                        <button id="editar">Editar</button>
+                        <button id="salvar">Salvar</button>
+                        <button id="cancelar">Cancelar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </body>
